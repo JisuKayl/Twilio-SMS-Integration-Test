@@ -58,7 +58,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Twilio SMS Sender</h1>
+        <h1>Twilio SMS Service</h1>
       </header>
       <main>
         <form onSubmit={handleSubmit} className="sms-form">
