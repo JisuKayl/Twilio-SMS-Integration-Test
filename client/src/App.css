@@ -1,5 +1,5 @@
 .App {
-  max-width: 800px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
 }
@@ -9,11 +9,43 @@
   text-align: center;
 }
 
+.content-wrapper {
+  display: flex;
+  gap: 20px;
+  height: auto;
+  min-height: 500px;
+}
+
+.form-container {
+  flex: 1;
+  min-width: 300px;
+}
+
+.history-container {
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.history-container h2 {
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+.message-list {
+  overflow-y: auto;
+  flex-grow: 1;
+  padding-right: 10px;
+}
+
 .sms-form {
   background-color: #f5f5f5;
   padding: 20px;
   border-radius: 8px;
-  margin-bottom: 20px;
 }
 
 .form-group {
@@ -29,6 +61,7 @@ label {
 input,
 textarea {
   width: 100%;
+  box-sizing: border-box;
   padding: 10px;
   border: 1px solid #ddd;
   border-radius: 4px;
@@ -64,24 +97,36 @@ button:disabled {
   border-radius: 4px;
 }
 
-.message-history {
-  margin-top: 30px;
-}
-
-.message-history ul {
+.message-list ul {
   list-style-type: none;
   padding: 0;
+  margin: 0;
 }
 
-.message-history li {
-  background-color: #f9f9f9;
+.message-list li {
+  background-color: #fff;
   border: 1px solid #eee;
   border-radius: 4px;
   padding: 15px;
   margin-bottom: 10px;
 }
 
-.message-history span {
+.message-list span {
   font-size: 14px;
   color: #666;
+}
+
+@media (max-width: 768px) {
+  .content-wrapper {
+    flex-direction: column;
+  }
+
+  .form-container,
+  .history-container {
+    width: 100%;
+  }
+
+  .message-list {
+    max-height: 300px;
+  }
 }

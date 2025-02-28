@@ -60,54 +60,58 @@ function App() {
       <header className="App-header">
         <h1>Twilio SMS Service</h1>
       </header>
-      <main>
-        <form onSubmit={handleSubmit} className="sms-form">
-          <div className="form-group">
-            <label htmlFor="to">Phone Number (with country code)</label>
-            <input
-              type="text"
-              id="to"
-              name="to"
-              value={formData.to}
-              onChange={handleChange}
-              placeholder="+1234567890"
-              required
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="message">Message</label>
-            <textarea
-              id="message"
-              name="message"
-              value={formData.message}
-              onChange={handleChange}
-              placeholder="Enter your message here"
-              required
-            />
-          </div>
-          <button type="submit" disabled={loading}>
-            {loading ? "Sending..." : "Send SMS"}
-          </button>
-          {status && <div className="status-message">{status}</div>}
-        </form>
-
-        <div className="message-history">
-          <h2>Recent Messages</h2>
-          {messages.length > 0 ? (
-            <ul>
-              {messages.map((msg) => (
-                <li key={msg.sid}>
-                  <strong>To: {msg.to}</strong>
-                  <p>{msg.body}</p>
-                  <span>Status: {msg.status}</span>
-                </li>
-              ))}
-            </ul>
-          ) : (
-            <p>No messages found</p>
-          )}
+      <div className="content-wrapper">
+        <div className="form-container">
+          <form onSubmit={handleSubmit} className="sms-form">
+            <div className="form-group">
+              <label htmlFor="to">Phone Number (with country code)</label>
+              <input
+                type="text"
+                id="to"
+                name="to"
+                value={formData.to}
+                onChange={handleChange}
+                placeholder="+1234567890"
+                required
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="message">Message</label>
+              <textarea
+                id="message"
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                placeholder="Enter your message here"
+                required
+              />
+            </div>
+            <button type="submit" disabled={loading}>
+              {loading ? "Sending..." : "Send SMS"}
+            </button>
+            {status && <div className="status-message">{status}</div>}
+          </form>
         </div>
-      </main>
+
+        <div className="history-container">
+          <h2>Recent Messages</h2>
+          <div className="message-list">
+            {messages.length > 0 ? (
+              <ul>
+                {messages.map((msg) => (
+                  <li key={msg.sid}>
+                    <strong>To: {msg.to}</strong>
+                    <p>{msg.body}</p>
+                    <span>Status: {msg.status}</span>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p>No messages found</p>
+            )}
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
